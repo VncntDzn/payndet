@@ -7,6 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 const TrendingAnime = ({navigation, data}: any) => {
   const handleNavigation = () => {

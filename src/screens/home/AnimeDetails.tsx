@@ -6,11 +6,23 @@ import {
   Divider,
   TopNavigationAction,
   Icon,
+  Tab,
+  TabBar,
 } from '@ui-kitten/components';
 import {View} from 'react-native';
 import YouTube from 'react-native-youtube';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import DetailsTab from './tabs/DetailsTab';
+const {Navigator, Screen} = createMaterialTopTabNavigator();
 
-import {Tab, TabBar} from '@ui-kitten/components';
+const TopTabBar = ({navigation, state}) => (
+  <TabBar
+    selectedIndex={state.index}
+    onSelect={index => navigation.navigate(state.routeNames[index])}>
+    <Tab title="USERS" />
+    <Tab title="ORDERS" />
+  </TabBar>
+);
 const BackIcon = props => <Icon {...props} name="arrow-back" />;
 const AnimeDetails = ({navigation, route}) => {
   const navigateBack = () => {
@@ -20,7 +32,6 @@ const AnimeDetails = ({navigation, route}) => {
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
   return (
     <>
       <TopNavigation title="Back to Home" accessoryLeft={BackAction} />
@@ -28,10 +39,10 @@ const AnimeDetails = ({navigation, route}) => {
       <Layout style={{flex: 1}}>
         <YouTube
           apiKey="AIzaSyBQQnt-6KCKzUAvhN6LNpEyDYQTr7EAdGY"
-          videoId={route.params.item.attributes.youtubeVideoId} // The YouTube video ID
-          play // control playback of video with true/false
-          fullscreen // control whether the video should play in fullscreen or inline
-          loop // control whether the video should loop when ended
+          videoId={route.params.item.attributes.youtubeVideoId}
+          play
+          fullscreen
+          loop
           style={{alignSelf: 'stretch', height: 300}}
         />
         <View style={{margin: 15}}>
@@ -46,14 +57,10 @@ const AnimeDetails = ({navigation, route}) => {
           </Text>
         </View>
 
-        <TabBar
-          selectedIndex={selectedIndex}
-          onSelect={index => setSelectedIndex(index)}>
-          <Tab title="DETAILS">
-            <Text>ASD</Text>
-          </Tab>
-          <Tab title="REVIEWS" />
-        </TabBar>
+        <Navigator tabBar={props => <TopTabBar {...props} />}>
+          <Screen name="Users" component={DetailsTab} />
+          <Screen name="Orders" component={DetailsTab} />
+        </Navigator>
       </Layout>
     </>
   );

@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-
+import React from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
-import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {Text} from '@ui-kitten/components';
-const HeaderCarousel = ({data}) => {
-  const [activeIndex, setActiveIndex] = useState<any>();
+import Carousel from 'react-native-snap-carousel';
+
+const HeaderCarousel = ({navigation, data}: any) => {
+  const handleNavigation = item => {
+    navigation.navigate('AnimeDetails', {
+      item,
+    });
+  };
   return (
     <Carousel
       layout="default"
@@ -17,9 +20,8 @@ const HeaderCarousel = ({data}) => {
       hasParallaxImages={true}
       style={{position: 'relative'}}
       pagingEnabled={true}
-      onSnapToItem={index => setActiveIndex(index)}
       renderItem={({item, index}: any) => (
-        <TouchableOpacity key={index}>
+        <TouchableOpacity key={index} onPress={() => handleNavigation(item)}>
           <Image
             resizeMode="stretch"
             source={{
@@ -41,7 +43,5 @@ const HeaderCarousel = ({data}) => {
     />
   );
 };
-
-HeaderCarousel.propTypes = {};
 
 export default HeaderCarousel;

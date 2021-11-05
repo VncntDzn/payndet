@@ -9,7 +9,6 @@ import {
 } from '@ui-kitten/components';
 import {View} from 'react-native';
 import YouTube from 'react-native-youtube';
-import DetailsTab from './tabs/DetailsTab';
 
 import {Tab, TabBar} from '@ui-kitten/components';
 const BackIcon = props => <Icon {...props} name="arrow-back" />;

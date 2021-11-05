@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './Home';
+import Home from '.';
 import AnimeList from '../../components/AnimeList';
 import AnimeDetails from './AnimeDetails';
 

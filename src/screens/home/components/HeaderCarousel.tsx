@@ -4,7 +4,7 @@ import {Text} from '@ui-kitten/components';
 import Carousel from 'react-native-snap-carousel';
 
 const HeaderCarousel = ({navigation, data}: any) => {
-  const handleNavigation = item => {
+  const handleNavigation = (item: any) => {
     navigation.navigate('AnimeDetails', {
       item,
     });

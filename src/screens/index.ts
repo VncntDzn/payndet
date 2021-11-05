@@ -1,5 +1,5 @@
 import Home from './home/index';
-import HomeStack from './home/HomeStack';
+import HomeStack from '../nav/stacks/HomeStack';
 import Search from './search';
 
 export {Home, HomeStack, Search};

@@ -1,8 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '.';
-import AnimeList from '../../components/AnimeList';
-import AnimeDetails from './AnimeDetails';
+import Home from '../../screens/home';
+import AnimeList from '../../components/shared/AnimeList';
+import AnimeDetails from '../../screens/home/components/AnimeDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +15,4 @@ const HomeStack = () => {
     </Stack.Navigator>
   );
 };
-
-HomeStack.propTypes = {};
-
 export default HomeStack;

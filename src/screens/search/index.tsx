@@ -6,7 +6,7 @@ import {Layout, Text} from '@ui-kitten/components';
 const Search = props => {
   return (
     <Layout style={{flex:1}}>
-      <Text>HI</Text>
+      <Text>HI Search</Text>
     </Layout>
   );
 };

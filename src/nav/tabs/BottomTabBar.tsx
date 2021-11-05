@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   BottomNavigation,
   BottomNavigationTab,
@@ -18,7 +17,5 @@ const BottomTabBar = ({navigation, state}) => {
     </BottomNavigation>
   );
 };
-
-BottomTabBar.propTypes = {};
 
 export default BottomTabBar;

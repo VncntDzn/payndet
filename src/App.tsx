@@ -7,8 +7,9 @@ import {default as theme} from './custom-theme.json';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Search, HomeStack} from './screens';
-import BottomTabBar from './nav/BottomTabBar';
+import {Search} from './screens';
+import {HomeStack} from './nav';
+import BottomTabBar from './nav/tabs/BottomTabBar';
 import {Provider} from 'react-redux';
 import {store} from './store';
 

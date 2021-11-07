@@ -8,15 +8,15 @@ const TopTabBar = ({navigation, state}) => (
   <TabBar
     selectedIndex={state.index}
     onSelect={index => navigation.navigate(state.routeNames[index])}>
-    <Tab title="USERS" />
-    <Tab title="ORDERS" />
+    <Tab title="DETAILS" />
+    <Tab title="REVIEWS" />
   </TabBar>
 );
 const DetailsTabBar = props => {
   return (
     <TopTabNav.Navigator tabBar={props => <TopTabBar {...props} />}>
-      <TopTabNav.Screen name="Users" component={DetailsTab} />
-      <TopTabNav.Screen name="Orders" component={DetailsTab} />
+      <TopTabNav.Screen name="DETAILS" component={DetailsTab} />
+      <TopTabNav.Screen name="REVIEWS" component={DetailsTab} />
     </TopTabNav.Navigator>
   );
 };

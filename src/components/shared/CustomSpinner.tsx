@@ -15,7 +15,7 @@ const CustomSpinner = ({visible}) => {
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 1,
+        zIndex: 2,
       }}>
       {visible && (
         <View style={{alignItems: 'center'}}>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Layout} from '@ui-kitten/components';
+import {Button, Layout} from '@ui-kitten/components';
 import {ScrollView, Text} from 'react-native';
 import TrendingAnime from './components/lists/TrendingAnime';
 import HeaderCarousel from './components/HeaderCarousel';
@@ -29,13 +29,15 @@ const Home = ({navigation}: any) => {
   }, [status]);
 
   return (
-    <Layout style={{flex: 1}}>
+    <>
       <CustomSpinner visible={spinner} />
-      <ScrollView>
-        <HeaderCarousel navigation={navigation} data={result} />
-        <TrendingAnime navigation={navigation} data={result} />
-      </ScrollView>
-    </Layout>
+      <Layout style={{flex: 1, borderWidth: 2, zIndex: spinner ? 1 : 2}}>
+        <ScrollView>
+          <HeaderCarousel navigation={navigation} data={result} />
+          <TrendingAnime navigation={navigation} data={result} />
+        </ScrollView>
+      </Layout>
+    </>
   );
 };
 export default Home;

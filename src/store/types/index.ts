@@ -3,5 +3,5 @@ export interface InitialstateProps {
   loading: boolean;
   error: null | string;
   data?: [];
-  selectedAnime?: any;
+  anime?: any;
 }

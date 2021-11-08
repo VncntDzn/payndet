@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
-import {fetchAnime} from './slices/index';
+import {fetchCollection, fetchResource} from './slices/index';
 
 // reducers
 const rootReducer = combineReducers({
-  fetch_anime: fetchAnime,
+  fetch_collection: fetchCollection,
+  fetch_resource: fetchResource,
 });
 
 export default rootReducer;

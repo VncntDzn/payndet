@@ -13,11 +13,17 @@ const TopTabBar = ({navigation, state}) => (
     <Tab title="REVIEWS" />
   </TabBar>
 );
-const DetailsTabBar = props => {
+const DetailsTabBar = ({data}) => {
   return (
     <TopTabNav.Navigator tabBar={props => <TopTabBar {...props} />}>
-      <TopTabNav.Screen name="DETAILS" component={DetailsTab} />
-      <TopTabNav.Screen name="REVIEWS" component={ReviewsTab} />
+      <TopTabNav.Screen
+        children={() => <DetailsTab items={data.attributes} />}
+        name="DETAILS"
+      />
+      <TopTabNav.Screen
+        name="REVIEWS"
+        children={() => <ReviewsTab items={data} />}
+      />
     </TopTabNav.Navigator>
   );
 };

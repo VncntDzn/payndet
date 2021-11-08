@@ -4,44 +4,41 @@ import {Layout, Text} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {RootState} from 'src/store/index';
 import {ScrollView} from 'react-native';
-const DetailsTab = ({navigation, route}) => {
-  const anime = useAppSelector(
-    (state: RootState) => state.fetch_anime.selectedAnime.attributes,
-  );
+const DetailsTab = ({items}) => {
   return (
     <ScrollView>
       <Layout style={{flex: 1, padding: 10}}>
         <Text status="warning" category="h6">
           Titles:{' '}
           <Text>
-            {anime.titles.en_jp}
+            {items.titles.en_jp}
             {', '}
-            {anime.titles.ja_jp}
+            {items.titles.ja_jp}
           </Text>
         </Text>
         <Text
           status="warning"
           category="h6"
-          onPress={() => console.log(anime.showType)}>
-          Type: <Text>{anime.showType}</Text>
+          onPress={() => console.log(items.showType)}>
+          Type: <Text>{items.showType}</Text>
         </Text>
         <Text status="warning" category="h6">
-          Age Rating: <Text>{anime.ageRating}</Text>
+          Age Rating: <Text>{items.ageRating}</Text>
         </Text>
         <Text status="warning" category="h6">
-          No. of Episodes: <Text>{anime.episodeCount}</Text>
+          No. of Episodes: <Text>{items.episodeCount}</Text>
         </Text>
         <Text status="warning" category="h6">
-          Created Date: <Text>{anime.createdAt}</Text>
+          Created Date: <Text>{items.createdAt}</Text>
         </Text>
         <Text status="warning" category="h6">
-          Updated Date: <Text>{anime.updatedAt}</Text>
+          Updated Date: <Text>{items.updatedAt}</Text>
         </Text>
         <Text style={{textAlign: 'justify'}}>
           <Text status="warning" category="h6">
             Synopsis:
           </Text>{' '}
-          {anime.synopsis}
+          {items.synopsis}
         </Text>
       </Layout>
     </ScrollView>

@@ -8,17 +8,13 @@ import {
   View,
 } from 'react-native';
 
-import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
-import {GET_SELECTED_ANIME} from '../../../../store/slices/anime/fetchAnime';
 const TrendingAnime = ({navigation, data}: any) => {
-  const dispatch = useAppDispatch();
   const handleNavigation = () => {
     navigation.navigate('AnimeList');
   };
 
   const viewSingleAnime = (item: any) => {
     navigation.navigate('AnimeDetails');
-    dispatch(GET_SELECTED_ANIME(item));
   };
 
   return (
@@ -29,7 +25,7 @@ const TrendingAnime = ({navigation, data}: any) => {
           size="large"
           accessoryLeft={<Icon name="film-outline" />}
           style={{alignSelf: 'flex-start'}}>
-          Upcoming
+          Trending
         </Button>
         <Button appearance="ghost" status="warning" onPress={handleNavigation}>
           See All

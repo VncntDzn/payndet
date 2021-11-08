@@ -1,3 +1,3 @@
-import fetchAnime from './anime/fetchAnime';
-
-export {fetchAnime};
+import fetchCollection from './anime/fetchCollection';
+import fetchResource from './anime/fetchResource';
+export {fetchCollection, fetchResource};

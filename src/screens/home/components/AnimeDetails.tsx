@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Layout, Text} from '@ui-kitten/components';
 import {View} from 'react-native';
 import YouTube from 'react-native-youtube';
@@ -9,8 +9,9 @@ import {useAppSelector} from '../../../store/hooks';
 import {RootState} from '../../../store/index';
 const AnimeDetails = ({navigation, route}) => {
   const anime = useAppSelector(
-    (state: RootState) => state.fetch_anime.selectedAnime.attributes,
+    (state: RootState) => state.fetch_resource.anime,
   );
+
   return (
     <>
       <BackIcon navigation={navigation} />
@@ -18,7 +19,7 @@ const AnimeDetails = ({navigation, route}) => {
       <Layout style={{flex: 1}}>
         <YouTube
           apiKey="AIzaSyBQQnt-6KCKzUAvhN6LNpEyDYQTr7EAdGY"
-          videoId={anime.youtubeVideoId}
+          videoId={route.params.item.attributes.youtubeVideoId}
           play
           fullscreen
           loop
@@ -26,13 +27,14 @@ const AnimeDetails = ({navigation, route}) => {
         />
         <View style={{margin: 15}}>
           <Text status="primary" category="h4">
-            {anime.titles.en_jp}
+            {route.params.item.attributes.titles.en_jp}
           </Text>
           <Text style={{marginVertical: 10}}>
-            Rating: {anime.averageRating} / 100
+            Rating: {route.params.item.attributes.averageRating} / 100
           </Text>
         </View>
-        <DetailsTabBar />
+
+        <DetailsTabBar data={route.params.item} />
       </Layout>
     </>
   );

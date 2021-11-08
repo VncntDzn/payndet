@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
 import {Text} from '@ui-kitten/components';
 import Carousel from 'react-native-snap-carousel';
 
+import {useAppDispatch, useAppSelector} from '../../../store/hooks';
+import {FETCH_RESOURCE} from '../../../store/slices/anime/fetchResource';
+import axios from 'axios';
+
 const HeaderCarousel = ({navigation, data}: any) => {
+  const dispatch = useAppDispatch();
   const handleNavigation = (item: any) => {
     navigation.navigate('AnimeDetails', {
       item,
     });
   };
+
   return (
     <Carousel
       layout="default"
@@ -18,10 +24,15 @@ const HeaderCarousel = ({navigation, data}: any) => {
       loop={true}
       autoplay={true}
       hasParallaxImages={true}
-      style={{position: 'relative'}}
+      style={{position: 'relative', zIndex: 10, borderWidth: 2}}
       pagingEnabled={true}
       renderItem={({item, index}: any) => (
-        <TouchableOpacity key={index} onPress={() => handleNavigation(item)}>
+        <TouchableOpacity
+          key={index}
+          onPress={() => {
+            handleNavigation(item);
+            dispatch(FETCH_RESOURCE({title: item.attributes.titles.en_jp}));
+          }}>
           <Image
             resizeMode="stretch"
             source={{

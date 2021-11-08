@@ -18,7 +18,7 @@ const TrendingAnime = ({navigation, data}: any) => {
 
   const viewSingleAnime = (item: any) => {
     navigation.navigate('AnimeDetails');
-    dispatch(GET_SELECTED_ANIME(item.attributes));
+    dispatch(GET_SELECTED_ANIME(item));
   };
 
   return (

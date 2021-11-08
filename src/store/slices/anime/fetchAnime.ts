@@ -4,7 +4,7 @@ import axios from 'axios';
 import {API_URL} from '@env';
 import {InitialstateProps} from 'src/store/types';
 
-const FETCH_ANIME = createAsyncThunk('/fetch-anime', async () => {
+const FETCH_ANIME = createAsyncThunk('/trending/anime/fetch-anime', async () => {
   try {
     const res = await axios.get(API_URL);
     return res.data;

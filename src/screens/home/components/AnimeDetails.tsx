@@ -9,7 +9,7 @@ import {useAppSelector} from '../../../store/hooks';
 import {RootState} from '../../../store/index';
 const AnimeDetails = ({navigation, route}) => {
   const anime = useAppSelector(
-    (state: RootState) => state.fetch_anime.selectedAnime,
+    (state: RootState) => state.fetch_anime.selectedAnime.attributes,
   );
   return (
     <>

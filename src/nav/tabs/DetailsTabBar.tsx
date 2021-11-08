@@ -2,6 +2,7 @@ import React from 'react';
 import {Tab, TabBar} from '@ui-kitten/components';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import DetailsTab from '../../components/tabs/DetailsTab';
+import ReviewsTab from '../../components/tabs/ReviewsTab';
 
 const TopTabNav = createMaterialTopTabNavigator();
 const TopTabBar = ({navigation, state}) => (
@@ -16,7 +17,7 @@ const DetailsTabBar = props => {
   return (
     <TopTabNav.Navigator tabBar={props => <TopTabBar {...props} />}>
       <TopTabNav.Screen name="DETAILS" component={DetailsTab} />
-      <TopTabNav.Screen name="REVIEWS" component={DetailsTab} />
+      <TopTabNav.Screen name="REVIEWS" component={ReviewsTab} />
     </TopTabNav.Navigator>
   );
 };

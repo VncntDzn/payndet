@@ -6,7 +6,7 @@ import {RootState} from 'src/store/index';
 import {ScrollView} from 'react-native';
 const DetailsTab = ({navigation, route}) => {
   const anime = useAppSelector(
-    (state: RootState) => state.fetch_anime.selectedAnime,
+    (state: RootState) => state.fetch_anime.selectedAnime.attributes,
   );
   return (
     <ScrollView>
@@ -19,7 +19,10 @@ const DetailsTab = ({navigation, route}) => {
             {anime.titles.ja_jp}
           </Text>
         </Text>
-        <Text status="warning" category="h6">
+        <Text
+          status="warning"
+          category="h6"
+          onPress={() => console.log(anime.showType)}>
           Type: <Text>{anime.showType}</Text>
         </Text>
         <Text status="warning" category="h6">
@@ -34,7 +37,7 @@ const DetailsTab = ({navigation, route}) => {
         <Text status="warning" category="h6">
           Updated Date: <Text>{anime.updatedAt}</Text>
         </Text>
-        <Text style={{textAlign: 'justify'}} onPress={() => console.log(anime)}>
+        <Text style={{textAlign: 'justify'}}>
           <Text status="warning" category="h6">
             Synopsis:
           </Text>{' '}

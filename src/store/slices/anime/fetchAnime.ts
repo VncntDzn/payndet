@@ -18,11 +18,16 @@ const initialState: InitialstateProps = {
   loading: false,
   error: null,
   data: [],
+  selectedAnime: [],
 };
 const fetchAnime = createSlice({
   name: 'fetch_anime',
   initialState,
-  reducers: {},
+  reducers: {
+    GET_SELECTED_ANIME: (state, action) => {
+      state.selectedAnime = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder.addCase(FETCH_ANIME.pending, (state, action) => {
       state.status = 'loading';
@@ -31,16 +36,15 @@ const fetchAnime = createSlice({
       state.status = 'finished';
       state.error = null;
       state.data = action.payload;
-      console.log(action.payload)
     });
     builder.addCase(FETCH_ANIME.rejected, (state, action) => {
       state.status = 'error';
-      console.log(action.payload);
-      /* state.error = action.payload.error; */
+      state.error = 'Something went wrong.';
     });
   },
 });
 
+const {actions, reducer} = fetchAnime;
+export const {GET_SELECTED_ANIME} = actions;
 export {FETCH_ANIME};
-const {reducer} = fetchAnime;
 export default reducer;

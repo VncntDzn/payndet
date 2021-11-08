@@ -8,16 +8,19 @@ import {
   View,
 } from 'react-native';
 
+import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
+import {GET_SELECTED_ANIME} from '../../../../store/slices/anime/fetchAnime';
 const TrendingAnime = ({navigation, data}: any) => {
+  const dispatch = useAppDispatch();
   const handleNavigation = () => {
     navigation.navigate('AnimeList');
   };
 
   const viewSingleAnime = (item: any) => {
-    navigation.navigate('AnimeDetails', {
-      item,
-    });
+    navigation.navigate('AnimeDetails');
+    dispatch(GET_SELECTED_ANIME(item.attributes));
   };
+
   return (
     <>
       <View style={styles.headerContainer}>

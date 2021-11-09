@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
 import {Text} from '@ui-kitten/components';
+import {useAppDispatch} from 'store/hooks';
+import {FETCH_RESOURCE} from 'store/slices/kitsu/fetchResource';
+import {AnimeListProps} from './types';
 import Carousel from 'react-native-snap-carousel';
 
-import {useAppDispatch, useAppSelector} from '../../../store/hooks';
-import {FETCH_RESOURCE} from '../../../store/slices/kitsu/fetchResource';
-
-const HeaderCarousel = ({navigation, data}: any) => {
+const HeaderCarousel = ({navigation, data}: AnimeListProps) => {
   const dispatch = useAppDispatch();
   const handleNavigation = (item: any) => {
     navigation.navigate('AnimeDetails', {
@@ -17,7 +17,7 @@ const HeaderCarousel = ({navigation, data}: any) => {
   return (
     <Carousel
       layout="default"
-      data={data}
+      data={data.data}
       sliderWidth={390}
       itemWidth={390}
       loop={true}

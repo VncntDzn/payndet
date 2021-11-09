@@ -7,13 +7,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import {AnimeListProps} from '../types';
 
-const KitsuAnimeFlatList = ({navigation, data}: any) => {
+const KitsuAnimeFlatList = ({navigation, data}: AnimeListProps) => {
   const handleNavigation = () => {
     navigation.navigate('AnimeList');
   };
 
-  const viewSingleAnime = (item: any) => {
+  const viewSingleAnime = (item: []) => {
     navigation.navigate('KitsuAnimeDetails', {
       item,
     });
@@ -35,7 +36,7 @@ const KitsuAnimeFlatList = ({navigation, data}: any) => {
       </View>
       <FlatList
         horizontal={true}
-        data={data}
+        data={data.data}
         renderItem={({item, index}) => (
           <TouchableOpacity
             style={styles.imageParent}
@@ -53,7 +54,6 @@ const KitsuAnimeFlatList = ({navigation, data}: any) => {
             </Text>
           </TouchableOpacity>
         )}
-        keyExtractor={item => item.id}
       />
     </>
   );

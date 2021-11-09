@@ -1,9 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../../screens/home';
-import AnimeList from '../../components/shared/AnimeList';
-import KitsuAnimeDetails from '../../screens/home/components/kitsu/KitsuAnimeDetails';
-import JikanAnimeDetails from '../../screens/home/components/jikan/JikanAnimeDetails';
+import {AnimeList} from 'components';
+import {KitsuAnimeDetails, JikanAnimeDetails} from 'screens/home/components';
+import Home from 'screens/home';
 
 const Stack = createNativeStackNavigator();
 

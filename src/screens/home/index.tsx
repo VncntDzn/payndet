@@ -5,29 +5,28 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {FETCH_COLLECTION} from 'store/slices/kitsu/thunks';
 import {FETCH_TOP_ANIME} from 'store/slices/jikan/thunks';
 import {CustomSpinner} from 'components';
-import {kitsuData, kitsuStatus} from 'store/slices/kitsu/fetchCollection';
+import {KITSU_DATA, KITSU_STATUS} from 'store/slices/kitsu/fetchCollection';
 import {
   AIRING_DATA,
   MOVIE_DATA,
   TV_DATA,
   UPCOMING_DATA,
 } from 'store/slices/jikan/fetchTopAnime';
-import KitsuAnimeFlatlist from './components/kitsu/KitsuAnimeFlatList';
-import JikanAnimeFlatList from './components/jikan/JikanAnimeFlatList';
-import HeaderCarousel from './components/HeaderCarousel';
+import {
+  KitsuAnimeFlatList,
+  JikanAnimeFlatList,
+  HeaderCarousel,
+} from './components';
 
 const Home = ({navigation}: any) => {
   const dispatch = useAppDispatch();
-  const status = useAppSelector(kitsuStatus);
-  const data: any = useAppSelector(kitsuData);
-  const jikanUpcoming: any = useAppSelector(UPCOMING_DATA);
-
-  const jikanAiring: any = useAppSelector(AIRING_DATA);
-  const jikanMovie: any = useAppSelector(MOVIE_DATA);
-
-  const tv: any = useAppSelector(TV_DATA);
-  const [result, setResult] = useState<any>();
   const [spinner, setSpinner] = useState<boolean>(true);
+  const status = useAppSelector(KITSU_STATUS);
+  const kitsuData = useAppSelector(KITSU_DATA);
+  const jikanUpcoming = useAppSelector(UPCOMING_DATA);
+  const jikanAiring = useAppSelector(AIRING_DATA);
+  const jikanMovie = useAppSelector(MOVIE_DATA);
+  const tv = useAppSelector(TV_DATA);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -37,10 +36,8 @@ const Home = ({navigation}: any) => {
       dispatch(FETCH_TOP_ANIME({topType: 'airing'}));
       dispatch(FETCH_TOP_ANIME({topType: 'movie'}));
       dispatch(FETCH_TOP_ANIME({topType: 'tv'}));
-      console.log(status);
     } else {
       setSpinner(!spinner);
-      setResult(data?.data);
     }
   }, [status]);
 
@@ -49,28 +46,24 @@ const Home = ({navigation}: any) => {
       <CustomSpinner visible={spinner} />
       <Layout style={{flex: 1, zIndex: spinner ? 1 : 2}}>
         <ScrollView>
-          <HeaderCarousel navigation={navigation} data={result} />
-          <KitsuAnimeFlatlist navigation={navigation} data={result} />
+          <HeaderCarousel navigation={navigation} data={kitsuData} />
+          <KitsuAnimeFlatList navigation={navigation} data={kitsuData} />
           <JikanAnimeFlatList
             title="Upcoming Anime"
             navigation={navigation}
-            data={jikanUpcoming.top}
+            data={jikanUpcoming}
           />
           <JikanAnimeFlatList
             title="Airing"
             navigation={navigation}
-            data={jikanAiring.top}
+            data={jikanAiring}
           />
           <JikanAnimeFlatList
             title="Movie"
             navigation={navigation}
-            data={jikanMovie.top}
+            data={jikanMovie}
           />
-          <JikanAnimeFlatList
-            title="TV"
-            navigation={navigation}
-            data={tv.top}
-          />
+          <JikanAnimeFlatList title="TV" navigation={navigation} data={tv} />
         </ScrollView>
       </Layout>
     </>

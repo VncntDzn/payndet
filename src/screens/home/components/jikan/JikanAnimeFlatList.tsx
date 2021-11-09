@@ -7,14 +7,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import {AnimeListProps} from '../types';
 
-const JikanAnimeFlatList = ({navigation, data, title}: any) => {
+const JikanAnimeFlatList = ({navigation, data, title}: AnimeListProps) => {
   const handleNavigation = () => {
     navigation.navigate('AnimeList');
-    console.log(data);
   };
 
-  const viewSingleAnime = (item: any) => {
+  const viewSingleAnime = (item: []) => {
     navigation.navigate('JikanAnimeDetails', {
       item,
     });
@@ -36,7 +36,7 @@ const JikanAnimeFlatList = ({navigation, data, title}: any) => {
       </View>
       <FlatList
         horizontal={true}
-        data={data}
+        data={data.top}
         renderItem={({item, index}) => (
           <TouchableOpacity
             style={styles.imageParent}
@@ -54,7 +54,6 @@ const JikanAnimeFlatList = ({navigation, data, title}: any) => {
             </Text>
           </TouchableOpacity>
         )}
-        keyExtractor={item => item.id}
       />
     </>
   );

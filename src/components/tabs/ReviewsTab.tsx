@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Layout, Text} from '@ui-kitten/components';
 import {ScrollView} from 'react-native';
 import axios from 'axios';
-const ReviewsTab = ({items}) => {
+
+const ReviewsTab = ({items}: any) => {
   const [reviews, setReviews] = useState<any>();
   const retrieveReviews = async () => {
     try {

@@ -31,9 +31,9 @@ const fetchCollection = createSlice({
 
 const {reducer} = fetchCollection;
 
-const kitsuData = (state: RootState) => state.fetch_collection.data;
-const kitsuStatus = (state: RootState) => state.fetch_collection.status;
+const KITSU_DATA = (state: RootState) => state.fetch_collection.data;
+const KITSU_STATUS = (state: RootState) => state.fetch_collection.status;
 
-export {kitsuData, kitsuStatus};
+export {KITSU_DATA, KITSU_STATUS};
 
 export default reducer;

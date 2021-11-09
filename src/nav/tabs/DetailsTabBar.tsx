@@ -1,11 +1,10 @@
 import React from 'react';
 import {Tab, TabBar} from '@ui-kitten/components';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import DetailsTab from '../../components/tabs/DetailsTab';
-import ReviewsTab from '../../components/tabs/ReviewsTab';
+import {DetailsTab, ReviewsTab} from 'components';
 
 const TopTabNav = createMaterialTopTabNavigator();
-const TopTabBar = ({navigation, state}) => (
+const TopTabBar = ({navigation, state}: any) => (
   <TabBar
     selectedIndex={state.index}
     onSelect={index => navigation.navigate(state.routeNames[index])}>
@@ -13,7 +12,7 @@ const TopTabBar = ({navigation, state}) => (
     <Tab title="REVIEWS" />
   </TabBar>
 );
-const DetailsTabBar = ({data}) => {
+const DetailsTabBar = ({data}: any) => {
   return (
     <TopTabNav.Navigator tabBar={props => <TopTabBar {...props} />}>
       <TopTabNav.Screen

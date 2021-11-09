@@ -7,7 +7,7 @@ import {default as theme} from './custom-theme.json';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Search} from './screens';
+import {Search, Profile, Manga} from './screens';
 import {BottomTabBar, HomeStack} from 'nav';
 import {Provider} from 'react-redux';
 import {store} from './store';
@@ -26,9 +26,8 @@ const App = () => {
                 tabBar={props => <BottomTabBar {...props} />}>
                 <BottomNav.Screen name="Home" component={HomeStack} />
                 <BottomNav.Screen name="Search" component={Search} />
-                {/* <Screen name="Search" component={Home} />
-                <Screen name="Manga" component={Home} />
-                <Screen name="Credits" component={Home} /> */}
+                <BottomNav.Screen name="Manga" component={Manga} />
+                <BottomNav.Screen name="Profile" component={Profile} />
               </BottomNav.Navigator>
             </NavigationContainer>
           </ApplicationProvider>

@@ -1,12 +1,6 @@
 import React from 'react';
 import {Text, Layout} from '@ui-kitten/components';
-import {
-  FlatList,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {AnimeListProps} from '../types';
 import {BackIcon} from 'components';
 

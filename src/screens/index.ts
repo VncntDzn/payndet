@@ -1,5 +1,5 @@
 import Home from './home/index';
-import HomeStack from '../nav/stacks/HomeStack';
+import Profile from './profile';
 import Search from './search';
-
-export {Home, HomeStack, Search};
+import Manga from './manga';
+export {Home, Search, Profile, Manga};

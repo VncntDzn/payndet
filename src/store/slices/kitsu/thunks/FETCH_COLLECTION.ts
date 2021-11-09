@@ -8,7 +8,6 @@ const FETCH_COLLECTION = createAsyncThunk('/anime/fetch-anime', async () => {
     const res = await axios.get(`${KITSU_URL}/trending/anime`);
     return res.data;
   } catch (e) {
-    console.log(e);
     return 'Something went wrong';
   }
 });

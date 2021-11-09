@@ -1,12 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {InitialstateProps} from 'store/types';
+import {ResourceAnimeProps} from 'store/types';
 import {FETCH_RESOURCE} from './thunks';
 
-const initialState: InitialstateProps = {
+const initialState: ResourceAnimeProps = {
   status: 'idle',
   loading: false,
   error: null,
-  data: [],
   anime: [],
 };
 const fetchAnimeResource = createSlice({
@@ -29,6 +28,6 @@ const fetchAnimeResource = createSlice({
   },
 });
 
-const {actions, reducer} = fetchAnimeResource;
+const {reducer} = fetchAnimeResource;
 export {FETCH_RESOURCE};
 export default reducer;

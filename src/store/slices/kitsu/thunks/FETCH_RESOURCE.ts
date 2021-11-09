@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const FETCH_RESOURCE = createAsyncThunk(
   '/anime/fetch-anime',
-  async ({title}: any) => {
+  async ({title}: {title: string | number}) => {
     try {
       const res = await axios.get(`${API_URL}`, {
         params: {

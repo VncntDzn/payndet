@@ -1,27 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Layout, Text} from '@ui-kitten/components';
 import {ScrollView} from 'react-native';
-import axios from 'axios';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {FETCH_REVIEWS} from 'store/slices/kitsu/thunks';
+import {REVIEWS_DATA} from 'store/slices/kitsu/fetchReviews';
 
 const ReviewsTab = ({items}: any) => {
-  const [reviews, setReviews] = useState<any>();
-  const retrieveReviews = async () => {
-    try {
-      const res = await axios.get(
-        `https://private-anon-d507aa85f8-kitsu.apiary-proxy.com/api/edge/anime/${items.id}/reviews`,
-      );
-      setReviews(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const reviewsData: any = useAppSelector(REVIEWS_DATA);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    retrieveReviews();
+    dispatch(FETCH_REVIEWS({id: items.id}));
   }, []);
   return (
     <ScrollView>
       <Layout style={{flex: 1, padding: 10}}>
-        {reviews?.data.map((data, index) => (
+        {reviewsData.map((data: any, index: number) => (
           <Text key={index}>
             <Text status="warning">Anonymous {index}: </Text>
             {data?.attributes.content}
@@ -31,7 +25,4 @@ const ReviewsTab = ({items}: any) => {
     </ScrollView>
   );
 };
-
-ReviewsTab.propTypes = {};
-
 export default ReviewsTab;

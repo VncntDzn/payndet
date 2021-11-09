@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {InitialstateProps} from 'store/types';
 import {FETCH_COLLECTION} from './thunks';
 import {RootState} from 'store';
+import { CollectionAnimeProps } from 'store/types';
 
-const initialState = {
+const initialState: CollectionAnimeProps = {
   status: 'idle',
   loading: false,
   error: null,

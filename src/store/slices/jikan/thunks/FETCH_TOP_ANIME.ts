@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const FETCH_TOP_ANIME = createAsyncThunk(
   '/anime/fetch-jikan-top-anime',
-  async ({topType}: any) => {
+  async ({topType}: {topType: string}) => {
     try {
       const res = await axios.get(`${JIKAN_URL}/top/anime/1/${topType}`);
 

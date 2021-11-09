@@ -1,8 +1,9 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {FETCH_TOP_ANIME} from './thunks';
 import {RootState} from 'store';
+import {TopAnimeProps} from 'store/types';
 
-const initialState = {
+const initialState: TopAnimeProps = {
   status: 'idle',
   loading: false,
   error: null,
@@ -20,21 +21,23 @@ const fetchTopAnime = createSlice({
     builder.addCase(FETCH_TOP_ANIME.pending, (state, action) => {
       state.status = 'loading';
     });
-    builder.addCase(FETCH_TOP_ANIME.fulfilled, (state, action) => {
-      state.status = 'finished';
-      state.error = null;
-
-      const {topType, data} = action.payload;
-      if (topType === 'airing') {
-        state.airing = data;
-      } else if (topType === 'upcoming') {
-        state.upcoming = data;
-      } else if (topType === 'movie') {
-        state.movie = data;
-      } else {
-        state.tv = data;
-      }
-    });
+    builder.addCase(
+      FETCH_TOP_ANIME.fulfilled,
+      (state, action: PayloadAction<any, any>) => {
+        state.status = 'finished';
+        state.error = null;
+        const {topType, data} = action.payload;
+        if (topType === 'airing') {
+          state.airing = data;
+        } else if (topType === 'upcoming') {
+          state.upcoming = data;
+        } else if (topType === 'movie') {
+          state.movie = data;
+        } else {
+          state.tv = data;
+        }
+      },
+    );
     builder.addCase(FETCH_TOP_ANIME.rejected, (state, action) => {
       state.status = 'error';
       state.error = 'Something went wrong.';
@@ -42,7 +45,7 @@ const fetchTopAnime = createSlice({
   },
 });
 
-const {actions, reducer} = fetchTopAnime;
+const {reducer} = fetchTopAnime;
 export {FETCH_TOP_ANIME};
 const UPCOMING_DATA = (state: RootState) => state.fetch_top_anime.upcoming;
 const AIRING_DATA = (state: RootState) => state.fetch_top_anime.airing;

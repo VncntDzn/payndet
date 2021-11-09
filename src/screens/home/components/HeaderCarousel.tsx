@@ -9,7 +9,7 @@ import Carousel from 'react-native-snap-carousel';
 const HeaderCarousel = ({navigation, data}: AnimeListProps) => {
   const dispatch = useAppDispatch();
   const handleNavigation = (item: any) => {
-    navigation.navigate('AnimeDetails', {
+    navigation.navigate('KitsuAnimeDetails', {
       item,
     });
   };

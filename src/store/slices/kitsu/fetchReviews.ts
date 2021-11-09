@@ -1,8 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {RootState} from 'store';
 import {InitialstateProps} from 'store/types';
 import {FETCH_REVIEWS} from './thunks';
 
-const initialState: InitialstateProps = {
+const initialState = {
   status: 'idle',
   loading: false,
   error: null,
@@ -18,7 +19,7 @@ const fetchAnimeReviews = createSlice({
     });
     builder.addCase(FETCH_REVIEWS.fulfilled, (state, action) => {
       state.status = 'finished';
-      state.anime = action.payload;
+      state.data = action.payload.data;
       state.error = null;
     });
     builder.addCase(FETCH_REVIEWS.rejected, (state, action) => {
@@ -30,4 +31,6 @@ const fetchAnimeReviews = createSlice({
 
 const {reducer} = fetchAnimeReviews;
 export {FETCH_REVIEWS};
+
+export const REVIEWS_DATA = (state: RootState) => state.fetch_reviews.data;
 export default reducer;

@@ -1,38 +1,31 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Layout} from '@ui-kitten/components';
-import {ScrollView, Text} from 'react-native';
-import TrendingAnime from './components/lists/TrendingAnime';
+import {Layout} from '@ui-kitten/components';
+import {ScrollView} from 'react-native';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {FETCH_COLLECTION} from 'store/slices/kitsu/thunks';
+import {FETCH_TOP_ANIME} from 'store/slices/jikan/thunks';
+import {CustomSpinner} from 'components';
+import {kitsuData, kitsuStatus} from 'store/slices/kitsu/fetchCollection';
+import {
+  AIRING_DATA,
+  MOVIE_DATA,
+  TV_DATA,
+  UPCOMING_DATA,
+} from 'store/slices/jikan/fetchTopAnime';
+import KitsuAnimeFlatlist from './components/kitsu/KitsuAnimeFlatList';
 import JikanAnimeFlatList from './components/jikan/JikanAnimeFlatList';
 import HeaderCarousel from './components/HeaderCarousel';
 
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {RootState} from 'src/store/index';
-import {FETCH_COLLECTION} from '../../store/slices/anime/fetchCollection';
-import {FETCH_TOP_ANIME} from '../../store/slices/jikan/fetchTopAnime';
-import {CustomSpinner} from '../../components';
-
 const Home = ({navigation}: any) => {
   const dispatch = useAppDispatch();
-  const status = useAppSelector(
-    (state: RootState) => state.fetch_collection.status,
-  );
-  const data: any = useAppSelector(
-    (state: RootState) => state.fetch_collection.data,
-  );
-  const jikanData: any = useAppSelector(
-    (state: RootState) => state.fetch_top_anime.upcoming,
-  );
+  const status = useAppSelector(kitsuStatus);
+  const data: any = useAppSelector(kitsuData);
+  const jikanUpcoming: any = useAppSelector(UPCOMING_DATA);
 
-  const sample: any = useAppSelector(
-    (state: RootState) => state.fetch_top_anime.airing,
-  );
-  const movie: any = useAppSelector(
-    (state: RootState) => state.fetch_top_anime.movie,
-  );
+  const jikanAiring: any = useAppSelector(AIRING_DATA);
+  const jikanMovie: any = useAppSelector(MOVIE_DATA);
 
-  const tv: any = useAppSelector(
-    (state: RootState) => state.fetch_top_anime.tv,
-  );
+  const tv: any = useAppSelector(TV_DATA);
   const [result, setResult] = useState<any>();
   const [spinner, setSpinner] = useState<boolean>(true);
 
@@ -44,6 +37,7 @@ const Home = ({navigation}: any) => {
       dispatch(FETCH_TOP_ANIME({topType: 'airing'}));
       dispatch(FETCH_TOP_ANIME({topType: 'movie'}));
       dispatch(FETCH_TOP_ANIME({topType: 'tv'}));
+      console.log(status);
     } else {
       setSpinner(!spinner);
       setResult(data?.data);
@@ -56,21 +50,21 @@ const Home = ({navigation}: any) => {
       <Layout style={{flex: 1, zIndex: spinner ? 1 : 2}}>
         <ScrollView>
           <HeaderCarousel navigation={navigation} data={result} />
-          <TrendingAnime navigation={navigation} data={result} />
+          <KitsuAnimeFlatlist navigation={navigation} data={result} />
           <JikanAnimeFlatList
             title="Upcoming Anime"
             navigation={navigation}
-            data={jikanData.top}
+            data={jikanUpcoming.top}
           />
           <JikanAnimeFlatList
             title="Airing"
             navigation={navigation}
-            data={sample.top}
+            data={jikanAiring.top}
           />
           <JikanAnimeFlatList
             title="Movie"
             navigation={navigation}
-            data={movie.top}
+            data={jikanMovie.top}
           />
           <JikanAnimeFlatList
             title="TV"

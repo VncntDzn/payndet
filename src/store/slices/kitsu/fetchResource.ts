@@ -1,26 +1,6 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import axios from 'axios';
-//@ts-ignore
-import {API_URL} from '@env';
-import {InitialstateProps} from 'src/store/types';
-
-const FETCH_RESOURCE = createAsyncThunk(
-  '/trending/anime/fetch-anime',
-  async ({title}: any) => {
-    try {
-      const res = await axios.get(`${API_URL}`, {
-        params: {
-          'filter[text]': title,
-        },
-      });
-
-      console.log(res.data);
-      return res.data;
-    } catch (e) {
-      return 'Something went wrong';
-    }
-  },
-);
+import {createSlice} from '@reduxjs/toolkit';
+import {InitialstateProps} from 'store/types';
+import {FETCH_RESOURCE} from './thunks';
 
 const initialState: InitialstateProps = {
   status: 'idle',

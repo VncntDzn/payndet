@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import {Layout, Text} from '@ui-kitten/components';
 import {View} from 'react-native';
 import YouTube from 'react-native-youtube';
-import DetailsTabBar from '../../../nav/tabs/DetailsTabBar';
-import {BackIcon} from '../../../components/index';
+import DetailsTabBar from '../../../../nav/tabs/DetailsTabBar';
+import {BackIcon} from '../../../../components/index';
 
-import {useAppSelector} from '../../../store/hooks';
-import {RootState} from '../../../store/index';
+import {useAppSelector} from '../../../../store/hooks';
+import {RootState} from '../../../../store/index';
 const AnimeDetails = ({navigation, route}) => {
   const anime = useAppSelector(
     (state: RootState) => state.fetch_resource.anime,

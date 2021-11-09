@@ -1,0 +1,3 @@
+import FETCH_TOP_ANIME from './FETCH_TOP_ANIME';
+
+export {FETCH_TOP_ANIME};

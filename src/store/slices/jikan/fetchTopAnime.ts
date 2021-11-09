@@ -1,21 +1,6 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import axios from 'axios';
-//@ts-ignore
-import {JIKAN_URL} from '@env';
-import {InitialstateProps} from 'src/store/types';
-
-const FETCH_TOP_ANIME = createAsyncThunk(
-  '/anime/fetch-jikan-top-anime',
-  async ({topType}: any) => {
-    try {
-      const res = await axios.get(`${JIKAN_URL}/top/anime/1/${topType}`);
-
-      return {data: res.data, topType};
-    } catch (e) {
-      return 'Something went wrong';
-    }
-  },
-);
+import {createSlice} from '@reduxjs/toolkit';
+import {FETCH_TOP_ANIME} from './thunks';
+import {RootState} from 'store';
 
 const initialState = {
   status: 'idle',
@@ -59,4 +44,10 @@ const fetchTopAnime = createSlice({
 
 const {actions, reducer} = fetchTopAnime;
 export {FETCH_TOP_ANIME};
+const UPCOMING_DATA = (state: RootState) => state.fetch_top_anime.upcoming;
+const AIRING_DATA = (state: RootState) => state.fetch_top_anime.airing;
+const MOVIE_DATA = (state: RootState) => state.fetch_top_anime.movie;
+const TV_DATA = (state: RootState) => state.fetch_top_anime.tv;
+
+export {UPCOMING_DATA, AIRING_DATA, MOVIE_DATA, TV_DATA};
 export default reducer;

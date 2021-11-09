@@ -1,19 +1,9 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import axios from 'axios';
-//@ts-ignore
-import {API_URL} from '@env';
-import {InitialstateProps} from 'src/store/types';
+import {createSlice} from '@reduxjs/toolkit';
+import {InitialstateProps} from 'store/types';
+import {FETCH_COLLECTION} from './thunks';
+import {RootState} from 'store';
 
-const FETCH_COLLECTION = createAsyncThunk('/anime/fetch-anime', async () => {
-  try {
-    const res = await axios.get(API_URL);
-    return res.data;
-  } catch (e) {
-    return 'Something went wrong';
-  }
-});
-
-const initialState: InitialstateProps = {
+const initialState = {
   status: 'idle',
   loading: false,
   error: null,
@@ -39,6 +29,11 @@ const fetchCollection = createSlice({
   },
 });
 
-const {actions, reducer} = fetchCollection;
-export {FETCH_COLLECTION};
+const {reducer} = fetchCollection;
+
+const kitsuData = (state: RootState) => state.fetch_collection.data;
+const kitsuStatus = (state: RootState) => state.fetch_collection.status;
+
+export {kitsuData, kitsuStatus};
+
 export default reducer;

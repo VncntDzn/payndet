@@ -8,14 +8,14 @@ import {
   View,
 } from 'react-native';
 
-const TrendingAnime = ({navigation, data}: any) => {
+const KitsuAnimeFlatList = ({navigation, data}: any) => {
   const handleNavigation = () => {
     navigation.navigate('AnimeList');
   };
 
   const viewSingleAnime = (item: any) => {
-    navigation.navigate('AnimeDetails', {
-      item
+    navigation.navigate('KitsuAnimeDetails', {
+      item,
     });
   };
 
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-export default TrendingAnime;
+export default KitsuAnimeFlatList;

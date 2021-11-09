@@ -4,8 +4,7 @@ import {Text} from '@ui-kitten/components';
 import Carousel from 'react-native-snap-carousel';
 
 import {useAppDispatch, useAppSelector} from '../../../store/hooks';
-import {FETCH_RESOURCE} from '../../../store/slices/anime/fetchResource';
-import axios from 'axios';
+import {FETCH_RESOURCE} from '../../../store/slices/kitsu/fetchResource';
 
 const HeaderCarousel = ({navigation, data}: any) => {
   const dispatch = useAppDispatch();

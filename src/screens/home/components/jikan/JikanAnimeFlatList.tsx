@@ -11,7 +11,9 @@ import {AnimeListProps} from '../types';
 
 const JikanAnimeFlatList = ({navigation, data, title}: AnimeListProps) => {
   const handleNavigation = () => {
-    navigation.navigate('AnimeList');
+    navigation.navigate('JikanAnimeAll', {
+      data
+    });
   };
 
   const viewSingleAnime = (item: []) => {

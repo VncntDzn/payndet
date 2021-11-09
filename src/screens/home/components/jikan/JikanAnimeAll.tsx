@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, Button, Icon} from '@ui-kitten/components';
+import {Text, Button, Icon, Layout} from '@ui-kitten/components';
 import {
   FlatList,
   Image,
@@ -8,37 +8,21 @@ import {
   View,
 } from 'react-native';
 import {AnimeListProps} from '../types';
+import {BackIcon} from 'components';
 
-const KitsuAnimeFlatList = ({navigation, data}: AnimeListProps) => {
-  const handleNavigation = () => {
-    navigation.navigate('KitsuAnimeAll', {
-      data: data.data,
-    });
-  };
-
+const JikanAnimeAll = ({navigation, route, title}: AnimeListProps) => {
   const viewSingleAnime = (item: []) => {
-    navigation.navigate('KitsuAnimeDetails', {
+    navigation.navigate('JikanAnimeDetails', {
       item,
     });
   };
 
   return (
-    <>
-      <View style={styles.headerContainer}>
-        <Button
-          appearance="ghost"
-          size="large"
-          accessoryLeft={<Icon name="film-outline" />}
-          style={{alignSelf: 'flex-start'}}>
-          Trending
-        </Button>
-        <Button appearance="ghost" status="warning" onPress={handleNavigation}>
-          See All
-        </Button>
-      </View>
+    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <BackIcon navigation={navigation}  />
       <FlatList
-        horizontal={true}
-        data={data.data}
+        numColumns={2}
+        data={route.params.data.top}
         renderItem={({item, index}) => (
           <TouchableOpacity
             style={styles.imageParent}
@@ -47,17 +31,17 @@ const KitsuAnimeFlatList = ({navigation, data}: AnimeListProps) => {
             <Image
               resizeMode="stretch"
               source={{
-                uri: item.attributes?.posterImage?.original,
+                uri: item.image_url,
               }}
               style={styles.image}
             />
             <Text style={{textAlign: 'center', marginTop: 9}}>
-              {item.attributes?.titles.en_jp}
+              {item.title}
             </Text>
           </TouchableOpacity>
         )}
       />
-    </>
+    </Layout>
   );
 };
 const styles = StyleSheet.create({
@@ -70,6 +54,8 @@ const styles = StyleSheet.create({
   },
   imageParent: {
     marginHorizontal: 10,
+    width: 150,
+    height: '100%',
   },
   image: {
     height: 150,
@@ -77,4 +63,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-export default KitsuAnimeFlatList;
+export default JikanAnimeAll;

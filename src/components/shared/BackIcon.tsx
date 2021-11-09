@@ -3,12 +3,10 @@ import {
   TopNavigationAction,
   Icon,
   Divider,
-  Text,
-  Layout,
   TopNavigation,
 } from '@ui-kitten/components';
 
-const BackIcon = ({navigation}) => {
+const BackIcon = ({navigation}: any) => {
   const navigateBack = () => {
     navigation.goBack();
   };

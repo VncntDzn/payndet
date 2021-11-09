@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {Spinner, Text} from '@ui-kitten/components';
 import {View} from 'react-native';
+import {SpinnerProps} from 'components/types';
 
-const CustomSpinner = ({visible}) => {
+const CustomSpinner = ({visible}: SpinnerProps) => {
   return (
     <View
       style={{
@@ -26,7 +25,4 @@ const CustomSpinner = ({visible}) => {
     </View>
   );
 };
-
-CustomSpinner.propTypes = {};
-
 export default CustomSpinner;

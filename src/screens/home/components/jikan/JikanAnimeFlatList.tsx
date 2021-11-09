@@ -8,14 +8,15 @@ import {
   View,
 } from 'react-native';
 
-const TrendingAnime = ({navigation, data}: any) => {
+const JikanAnimeFlatList = ({navigation, data, title}: any) => {
   const handleNavigation = () => {
     navigation.navigate('AnimeList');
+    console.log(data);
   };
 
   const viewSingleAnime = (item: any) => {
-    navigation.navigate('AnimeDetails', {
-      item
+    navigation.navigate('JikanAnimeDetails', {
+      item,
     });
   };
 
@@ -27,7 +28,7 @@ const TrendingAnime = ({navigation, data}: any) => {
           size="large"
           accessoryLeft={<Icon name="film-outline" />}
           style={{alignSelf: 'flex-start'}}>
-          Trending
+          {title}
         </Button>
         <Button appearance="ghost" status="warning" onPress={handleNavigation}>
           See All
@@ -44,12 +45,12 @@ const TrendingAnime = ({navigation, data}: any) => {
             <Image
               resizeMode="stretch"
               source={{
-                uri: item.attributes?.posterImage?.original,
+                uri: item.image_url,
               }}
               style={styles.image}
             />
             <Text style={{textAlign: 'center', marginTop: 9}}>
-              {item.attributes?.titles.en_jp}
+              {item.title}
             </Text>
           </TouchableOpacity>
         )}
@@ -68,6 +69,8 @@ const styles = StyleSheet.create({
   },
   imageParent: {
     marginHorizontal: 10,
+    width: 150,
+    height: '100%',
   },
   image: {
     height: 150,
@@ -75,4 +78,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-export default TrendingAnime;
+export default JikanAnimeFlatList;

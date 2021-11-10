@@ -14,10 +14,7 @@ const DetailsTab = ({items}: any) => {
             {items.titles.ja_jp}
           </Text>
         </Text>
-        <Text
-          status="warning"
-          category="h6"
-          onPress={() => console.log(items.showType)}>
+        <Text status="warning" category="h6">
           Type: <Text>{items.showType}</Text>
         </Text>
         <Text status="warning" category="h6">
@@ -42,7 +39,5 @@ const DetailsTab = ({items}: any) => {
     </ScrollView>
   );
 };
-
-DetailsTab.propTypes = {};
 
 export default DetailsTab;

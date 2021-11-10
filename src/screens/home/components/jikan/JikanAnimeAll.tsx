@@ -1,12 +1,6 @@
 import React from 'react';
-import {Text, Button, Icon, Layout} from '@ui-kitten/components';
-import {
-  FlatList,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {Text, Layout} from '@ui-kitten/components';
+import {FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {AnimeListProps} from '../types';
 import {BackIcon} from 'components';
 
@@ -19,7 +13,7 @@ const JikanAnimeAll = ({navigation, route, title}: AnimeListProps) => {
 
   return (
     <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <BackIcon navigation={navigation}  />
+      <BackIcon navigation={navigation} />
       <FlatList
         numColumns={2}
         data={route.params.data.top}

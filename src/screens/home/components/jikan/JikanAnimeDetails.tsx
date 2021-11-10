@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Layout, Text} from '@ui-kitten/components';
-import {BackIcon} from '../../../../components/index';
-import {Image, Linking, View} from 'react-native';
-const JikanAnimeDetails = ({navigation, route}) => {
+import {BackIcon} from 'components';
+import {Image, Linking, StyleSheet, View} from 'react-native';
+import {AnimeListProps} from '../types';
+
+const JikanAnimeDetails = ({navigation, route}: AnimeListProps) => {
   return (
     <>
       <BackIcon navigation={navigation} />
@@ -18,25 +19,12 @@ const JikanAnimeDetails = ({navigation, route}) => {
         />
         <Image
           resizeMode="stretch"
+          style={styles.coverImage}
           source={{
             uri: route.params.item.image_url,
           }}
-          style={{
-            height: 200,
-            width: '50%',
-            position: 'absolute',
-            borderRadius: 20,
-            top: 130,
-            alignSelf: 'center',
-          }}
         />
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginVertical: 100,
-            marginHorizontal: 10,
-          }}>
+        <View style={styles.textContainer}>
           <Text status="primary" category="h5">
             {route.params.item.title}
           </Text>
@@ -65,7 +53,20 @@ const JikanAnimeDetails = ({navigation, route}) => {
     </>
   );
 };
-
-JikanAnimeDetails.propTypes = {};
-
+const styles = StyleSheet.create({
+  coverImage: {
+    height: 200,
+    width: '50%',
+    position: 'absolute',
+    borderRadius: 20,
+    top: 130,
+    alignSelf: 'center',
+  },
+  textContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 100,
+    marginHorizontal: 10,
+  },
+});
 export default JikanAnimeDetails;

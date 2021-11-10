@@ -3,16 +3,19 @@ import {Layout, Text} from '@ui-kitten/components';
 import {View} from 'react-native';
 import {DetailsTabBar} from 'nav';
 import {BackIcon} from 'components';
+import {AnimeListProps} from '../types';
+//@ts-ignore
+import {YOUTUBE_ID} from '@env';
 import YouTube from 'react-native-youtube';
 
-const KitsuAnimeDetails = ({navigation, route}) => {
+const KitsuAnimeDetails = ({navigation, route}: AnimeListProps) => {
   return (
     <>
       <BackIcon navigation={navigation} />
 
       <Layout style={{flex: 1}}>
         <YouTube
-          apiKey="AIzaSyBQQnt-6KCKzUAvhN6LNpEyDYQTr7EAdGY"
+          apiKey={`${YOUTUBE_ID}`}
           videoId={route.params.item.attributes.youtubeVideoId}
           play
           fullscreen
@@ -33,7 +36,5 @@ const KitsuAnimeDetails = ({navigation, route}) => {
     </>
   );
 };
-
-KitsuAnimeDetails.propTypes = {};
 
 export default KitsuAnimeDetails;

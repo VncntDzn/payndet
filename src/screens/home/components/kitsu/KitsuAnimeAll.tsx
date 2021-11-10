@@ -4,7 +4,7 @@ import {FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {AnimeListProps} from '../types';
 import {BackIcon} from 'components';
 
-const KitsuAnimeAll = ({navigation, route, title}: AnimeListProps) => {
+const KitsuAnimeAll = ({navigation, route}: AnimeListProps) => {
   const viewSingleAnime = (item: []) => {
     navigation.navigate('KitsuAnimeDetails', {
       item,

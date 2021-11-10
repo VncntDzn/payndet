@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
-import {Layout, Text} from '@ui-kitten/components';
+import {Layout, Text, Input} from '@ui-kitten/components';
 
 const Manga = props => {
   return (

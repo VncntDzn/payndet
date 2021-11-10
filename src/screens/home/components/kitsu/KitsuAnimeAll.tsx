@@ -6,7 +6,7 @@ import {BackIcon} from 'components';
 
 const KitsuAnimeAll = ({navigation, route, title}: AnimeListProps) => {
   const viewSingleAnime = (item: []) => {
-    navigation.navigate('JikanAnimeDetails', {
+    navigation.navigate('KitsuAnimeDetails', {
       item,
     });
   };

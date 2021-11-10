@@ -1,16 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {View} from 'react-native';
-import {Layout, Text} from '@ui-kitten/components';
+import {Layout} from '@ui-kitten/components';
+import {SearchFlatList, SearchBar} from './components';
 
-const Search = props => {
+const Seach = ({navigation}) => {
   return (
-    <Layout style={{flex:1}}>
-      <Text>HI Search</Text>
+    <Layout style={{flex: 1, padding: 10}}>
+      <SearchBar navigation={navigation} />
+      <SearchFlatList navigation={navigation} />
     </Layout>
   );
 };
 
-Search.propTypes = {};
+Seach.propTypes = {};
 
-export default Search;
+export default Seach;

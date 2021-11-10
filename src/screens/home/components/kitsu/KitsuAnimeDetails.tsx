@@ -1,17 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Layout, Text} from '@ui-kitten/components';
 import {View} from 'react-native';
+import {DetailsTabBar} from 'nav';
+import {BackIcon} from 'components';
 import YouTube from 'react-native-youtube';
-import DetailsTabBar from '../../../../nav/tabs/DetailsTabBar';
-import {BackIcon} from '../../../../components/index';
 
-import {useAppSelector} from '../../../../store/hooks';
-import {RootState} from '../../../../store/index';
-const AnimeDetails = ({navigation, route}) => {
-  const anime = useAppSelector(
-    (state: RootState) => state.fetch_resource.anime,
-  );
-
+const KitsuAnimeDetails = ({navigation, route}) => {
   return (
     <>
       <BackIcon navigation={navigation} />
@@ -40,6 +34,6 @@ const AnimeDetails = ({navigation, route}) => {
   );
 };
 
-AnimeDetails.propTypes = {};
+KitsuAnimeDetails.propTypes = {};
 
-export default AnimeDetails;
+export default KitsuAnimeDetails;

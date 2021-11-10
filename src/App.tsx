@@ -24,7 +24,7 @@ const App = () => {
               <BottomNav.Navigator
                 screenOptions={{headerShown: false}}
                 tabBar={props => <BottomTabBar {...props} />}>
-                <BottomNav.Screen name="Home" component={HomeStack} />
+                <BottomNav.Screen name="HomeStack" component={HomeStack} />
                 <BottomNav.Screen name="Search" component={Search} />
                 <BottomNav.Screen name="Manga" component={Manga} />
                 <BottomNav.Screen name="Profile" component={Profile} />

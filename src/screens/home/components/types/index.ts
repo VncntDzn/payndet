@@ -1,5 +1,5 @@
 export interface AnimeListProps {
   navigation: any;
-  data: any;
+  data?: any;
   title?: string;
 }

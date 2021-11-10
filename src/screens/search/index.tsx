@@ -3,7 +3,7 @@ import {Layout} from '@ui-kitten/components';
 import {SearchFlatList, SearchBar} from './components';
 import {ScrollView} from 'react-native';
 
-const Seach = ({navigation}) => {
+const Seach = ({navigation}: any) => {
   return (
     <ScrollView>
       <Layout style={{flex: 1, padding: 10}}>
@@ -13,7 +13,5 @@ const Seach = ({navigation}) => {
     </ScrollView>
   );
 };
-
-Seach.propTypes = {};
 
 export default Seach;

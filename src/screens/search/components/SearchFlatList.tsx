@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import {Divider, Text} from '@ui-kitten/components';
-import {KITSU_DATA, KITSU_STATUS} from 'store/slices/kitsu/fetchCollection';
-import {FETCH_COLLECTION} from 'store/slices/kitsu/thunks';
+import React from 'react';
+import {Text} from '@ui-kitten/components';
+import {KITSU_DATA} from 'store/slices/kitsu/fetchCollection';
 import {
   FlatList,
   Image,
@@ -10,9 +8,9 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {useAppSelector} from 'store/hooks';
 
-const SearchFlatList = ({navigation}) => {
+const SearchFlatList = ({navigation}: any) => {
   const data: any = useAppSelector(KITSU_DATA);
   const viewSingleAnime = (item: []) => {
     navigation.navigate('KitsuAnimeDetails', {
@@ -72,6 +70,4 @@ const styles = StyleSheet.create({
     width: 90,
   },
 });
-SearchFlatList.propTypes = {};
-
 export default SearchFlatList;

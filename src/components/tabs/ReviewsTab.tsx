@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {FETCH_REVIEWS} from 'store/slices/kitsu/thunks';
 import {REVIEWS_DATA} from 'store/slices/kitsu/fetchReviews';
 
-const ReviewsTab = ({items}: any) => {
+const ReviewsTab = ({items}: {items: any}) => {
   const reviewsData: any = useAppSelector(REVIEWS_DATA);
   const dispatch = useAppDispatch();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {Layout, Text} from '@ui-kitten/components';
 import {ScrollView} from 'react-native';
 
-const DetailsTab = ({items}: any) => {
+const DetailsTab = ({items}: {items: any}) => {
   return (
     <ScrollView>
       <Layout style={{flex: 1, padding: 10}}>

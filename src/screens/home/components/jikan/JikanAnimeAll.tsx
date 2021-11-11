@@ -4,7 +4,7 @@ import {FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {AnimeListProps} from '../types';
 import {BackIcon} from 'components';
 
-const JikanAnimeAll = ({navigation, route, title}: AnimeListProps) => {
+const JikanAnimeAll = ({navigation, route}: AnimeListProps) => {
   const viewSingleAnime = (item: []) => {
     navigation.navigate('JikanAnimeDetails', {
       item,

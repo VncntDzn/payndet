@@ -6,7 +6,7 @@ import {
   TopNavigation,
 } from '@ui-kitten/components';
 
-const BackIcon = ({navigation}: any) => {
+const BackIcon = ({navigation}: {navigation: any}) => {
   const navigateBack = () => {
     navigation.goBack();
   };

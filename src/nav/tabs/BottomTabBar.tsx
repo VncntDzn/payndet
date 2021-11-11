@@ -5,7 +5,7 @@ import {
   Icon,
 } from '@ui-kitten/components';
 
-const BottomTabBar = ({navigation, state}: any) => {
+const BottomTabBar = ({navigation, state}: {navigation: any; state: any}) => {
   return (
     <BottomNavigation
       selectedIndex={state.index}

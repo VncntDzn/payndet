@@ -12,7 +12,7 @@ const TopTabBar = ({navigation, state}: any) => (
     <Tab title="REVIEWS" />
   </TabBar>
 );
-const DetailsTabBar = ({data}: any) => {
+const DetailsTabBar = ({data}: {data:any}) => {
   return (
     <TopTabNav.Navigator tabBar={props => <TopTabBar {...props} />}>
       <TopTabNav.Screen

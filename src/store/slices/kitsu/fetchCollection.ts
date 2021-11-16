@@ -1,13 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {FETCH_COLLECTION} from './thunks';
 import {RootState} from 'store';
-import { CollectionAnimeProps } from 'store/types';
+import {CollectionAnimeProps} from 'store/types';
 
-const initialState: CollectionAnimeProps = {
+const initialState = {
   status: 'idle',
   loading: false,
   error: null,
   data: [],
+  trending: [],
+  popular: [],
+  favorites: [],
+  upcoming: [],
+  current: [],
 };
 const fetchCollection = createSlice({
   name: 'fetch_collection',
@@ -20,7 +25,12 @@ const fetchCollection = createSlice({
     builder.addCase(FETCH_COLLECTION.fulfilled, (state, action) => {
       state.status = 'finished';
       state.error = null;
-      state.data = action.payload;
+
+      state.trending = action.payload.trending;
+      state.popular = action.payload.popular;
+      state.upcoming = action.payload.upcoming;
+      state.current = action.payload.current;
+      state.favorites = action.payload.favorites;
     });
     builder.addCase(FETCH_COLLECTION.rejected, (state, action) => {
       state.status = 'error';
@@ -31,9 +41,14 @@ const fetchCollection = createSlice({
 
 const {reducer} = fetchCollection;
 
-const KITSU_DATA = (state: RootState) => state.fetch_collection.data;
+const TRENDING = (state: RootState) => state.fetch_collection.trending;
+const POPULAR = (state: RootState) => state.fetch_collection.popular;
+const UPCOMING = (state: RootState) => state.fetch_collection.upcoming;
+const CURRENT = (state: RootState) => state.fetch_collection.current;
+const FAVORITES = (state: RootState) => state.fetch_collection.favorites;
+
 const KITSU_STATUS = (state: RootState) => state.fetch_collection.status;
 
-export {KITSU_DATA, KITSU_STATUS};
+export {FAVORITES, CURRENT, UPCOMING, TRENDING, POPULAR, KITSU_STATUS};
 
 export default reducer;

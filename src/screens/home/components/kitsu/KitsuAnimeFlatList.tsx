@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {AnimeListProps} from '../types';
 
-const KitsuAnimeFlatList = ({navigation, data}: AnimeListProps) => {
+const KitsuAnimeFlatList = ({navigation, data, title}: AnimeListProps) => {
   const handleNavigation = () => {
     navigation.navigate('KitsuAnimeAll', {
       data: data.data,
@@ -30,7 +30,7 @@ const KitsuAnimeFlatList = ({navigation, data}: AnimeListProps) => {
           size="large"
           accessoryLeft={<Icon name="film-outline" />}
           style={{alignSelf: 'flex-start'}}>
-          Trending
+          {title}
         </Button>
         <Button appearance="ghost" status="warning" onPress={handleNavigation}>
           See All
@@ -51,7 +51,13 @@ const KitsuAnimeFlatList = ({navigation, data}: AnimeListProps) => {
               }}
               style={styles.image}
             />
-            <Text style={{textAlign: 'center', marginTop: 9}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 9,
+                width: 100,
+                alignSelf: 'center',
+              }}>
               {item.attributes?.titles.en_jp}
             </Text>
           </TouchableOpacity>
